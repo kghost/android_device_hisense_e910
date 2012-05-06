@@ -26,7 +26,12 @@ PRODUCT_PACKAGES += \
     libRS \
     librs_jni \
     hwprops \
-    rzscontrol \
+    rzscontrol
+
+# override default
+PRODUCT_COPY_FILES += \
+#    device/hisense/e910/init.rc:root/init.rc \
+    device/hisense/e910/ueventd.rc:root/ueventd.rc \
 
 # vold config
 PRODUCT_COPY_FILES += \
@@ -108,30 +113,135 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.xml:system/etc/permissions/android.hardware.touchscreen.xml
 
-PRODUCT_PROPERTY_OVERRIDES := \
-    keyguard.no_require_sim=true \
-    ro.com.android.dateformat=dd-MM-yyyy \
-    ro.ril.hsxpa=1 \
-    ro.ril.gprsclass=10 \
-    ro.media.dec.jpeg.memcap=10000000
-
 PRODUCT_PROPERTY_OVERRIDES += \
     rild.libpath=/system/lib/libril-qc-1.so \
     rild.libargs=-d /dev/smd0 \
-    ro.com.android.dataroaming=true \
-    ring.delay=0 \
-    ro.telephony.call_ring.delay=0 \
-    ro.telephony.call_ring.multiple=false
+    ril.subscription.types=NV,RUIM \
+    DEVICE_PROVISIONED=1 \
+    debug.sf.hw=1 \
+    debug.composition.7x27A.type=mdp \
+    debug.composition.7x25A.type=mdp \
+    dalvik.vm.heapsize=32m
 
+#
+# system props for the cne module
+#
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.compcache.default=18
+    persist.cne.UseCne=none \
+    persist.cne.bat.range.low.med=30 \
+    persist.cne.bat.range.med.high=60 \
+    persist.cne.loc.policy.op=/system/etc/OperatorPolicy.xml \
+    persist.cne.loc.policy.user=/system/etc/UserPolicy.xml \
+    persist.cne.bwbased.rat.sel=false \
+    persist.cne.snsr.based.rat.mgt=false \
+    persist.cne.bat.based.rat.mgt=false \
+    persist.cne.rat.acq.time.out=30000 \
+    persist.cne.rat.acq.retry.tout=0 \
+    persist.cne.fmc.mode=false \
+    persist.cne.fmc.init.time.out=30 \
+    persist.cne.fmc.comm.time.out=130 \
+    persist.cne.fmc.retry=false
 
-# Time between scans in seconds. Keep it high to minimize battery drain.
-# This only affects the case in which there are remembered access points,
-# but none are in range.
+#
+# system props for the MM modules
+#
 PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.supplicant_scan_interval=15
+    media.stagefright.enable-player=true \
+    media.stagefright.enable-meta=false \
+    media.stagefright.enable-scan=true \
+    media.stagefright.enable-http=true \
+    media.stagefright.enable-fma2dp=true \
+    media.stagefright.enable-aac=true \
+    media.stagefright.enable-qcp=true
 
+# The OpenGL ES API level that is natively supported by this device.
+# This is a 16.16 fixed point number
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.opengles.version=131072
+#
+# system props for the data modules
+#
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.use_data_netmgrd=true \
+    persist.data.ds_fmc_app.mode=0
+
+#
+# system props for IMS module
+#
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.ims.regmanager.mode=0
+
+#
+# system prop for requesting Master role in incoming Bluetooth connection.
+#
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.bluetooth.request.master=true
+
+#
+# system prop for Bluetooth FTP profile
+#
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qualcomm.bluetooth.ftp=true
+
+#
+# system prop for Bluetooth SAP profile
+#
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qualcomm.bluetooth.sap=true
+
+#
+# system prop for Bluetooth Auto connect for remote initated connections
+#
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.bluetooth.remote.autoconnect=true
+
+#
+#system property for Bluetooth discoverability timeout in seconds
+#0: Always discoverable
+#-1:enable discoverability timeout function. chendapeng comment
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.bt.discoverable_time=-1
+
+#
+# System prop to enable/disable OMH. Enabled by default
+#modify weiliying 2011.11.17 for close the omh property
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.omh.enabled=0
+
+#System prop to enable ehrpd capability
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.ehrpd=true
+
+# System property for cabl
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qualcomm.cabl=1
+
+#
+#System prop to determine availability of
+#analog fm path
+#
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.fm.analogpath.supported=false
+
+#liuhongxing for c+w
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.wifi.chinanet.enable=1
+
+#
+#System property for FM transmitter
+#
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.fm.transmitter=false
+
+#
+# Project ID of HMCT
+#
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.product.project=ES7136
+
+#
+# Density
+#
 # density in DPI of the LCD of this board. This is used to scale the UI
 # appropriately. If this property is not defined, the default value is 160 dpi. 
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -141,19 +251,82 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.default_network=4
 
+#
+# Version of hardware and software.
+#
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hardware.version=V2.00 \
+    ro.software.version=E910
+
+#
+# Product name for display.
+#
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.product.fullname=HS-E910
+#for CTS test
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hisense.cts=0
+
+#
+# Product USB PID.
+#
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.product.usb_pid=9114
+
+#Phone Storage Supported
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.phonestorage.enabled=true
+
+#Auto plugin usb ON/OFF
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.cdmalog=OFF
+
+#DualMic enable
+# true to enable
+# false to disable
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.dualmic.enabled=false
+
+# Data roaming default
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.com.android.dataroaming=true
+
+# Baseband version
+PRODUCT_PROPERTY_OVERRIDES += \
+    gsm.version.baseband=MSM7X2XA
+
+#lhy add for hisense ota
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.product.hitdeviceprefix=861007009002003000000091 \
+    ro.build.hitdeviceversion=1.0.0.0
+
+# For debug, Should del later...
+#persist.sys.cdmalog=ON
+#persist.sys.applog=1
+#persist.sys.kmsg=1
+
+#disable webkit renderer prop for smooth flip  by syr 2012.1.17
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.tbs.partialrender=0
+#
+# ADDITIONAL_BUILD_PROPERTIES
+#
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.product.platform=msm7627a \
+    ro.vendor.extension_library=/system/lib/libqc-opt.so
+
 # Disable JIT by default
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.execution-mode=int:jit \
     persist.sys.use_dithering=0
 
-# The OpenGL ES API level that is natively supported by this device.
-# This is a 16.16 fixed point number
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.opengles.version=131072
-
 # Don't put dexfiles in /cache on e910
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dexopt-data-only=1
+
+#Bravia Engine Service
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.service.swiqi.supported=true
 
 # wpa_supplicant configuration file
 PRODUCT_COPY_FILES += \

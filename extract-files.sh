@@ -20,6 +20,10 @@ DEVICE=e910
 
 mkdir -p ../../../vendor/hisense/$DEVICE/proprietary
 adb pull /system/etc/AudioFilter.csv ../../../vendor/hisense/$DEVICE/proprietary/AudioFilter.csv
+adb pull /system/lib/egl/libEGL_adreno200.so ../../../vendor/hisense/$DEVICE/proprietary/libEGL_adreno200.so
+adb pull /system/lib/egl/libGLESv1_CM_adreno200.so ../../../vendor/hisense/$DEVICE/proprietary/libGLESv1_CM_adreno200.so
+adb pull /system/lib/egl/libGLESv2_adreno200.so ../../../vendor/hisense/$DEVICE/proprietary/libGLESv2_adreno200.so
+adb pull /system/lib/libgsl.so ../../../vendor/hisense/$DEVICE/proprietary/libgsl.so
 adb pull /system/lib/libril-qc-1.so ../../../vendor/hisense/$DEVICE/proprietary/libril-qc-1.so
 adb pull /system/lib/liboncrpc.so ../../../vendor/hisense/$DEVICE/proprietary/liboncrpc.so
 adb pull /system/lib/libdsm.so ../../../vendor/hisense/$DEVICE/proprietary/libdsm.so
@@ -41,13 +45,13 @@ adb pull /system/bin/qmuxd ../../../vendor/hisense/$DEVICE/proprietary/qmuxd
 adb pull /system/lib/libmmjpeg.so ../../../vendor/hisense/$DEVICE/proprietary/libmmjpeg.so
 adb pull /system/lib/libmmipl.so ../../../vendor/hisense/$DEVICE/proprietary/libmmipl.so
 adb pull /system/lib/libmm-adspsvc.so ../../../vendor/hisense/$DEVICE/proprietary/libmm-adspsvc.so
-adb pull /system/lib/libmm-omxcore.so ../../../vendor/hisense/$DEVICE/proprietary/libmm-omxcore.so
 adb pull /system/lib/libOmxH264Dec.so ../../../vendor/hisense/$DEVICE/proprietary/libOmxH264Dec.so
 adb pull /system/lib/libOmxMpeg4Dec.so ../../../vendor/hisense/$DEVICE/proprietary/libOmxMpeg4Dec.so
 adb pull /system/lib/libOmxVidEnc.so ../../../vendor/hisense/$DEVICE/proprietary/libOmxVidEnc.so
 adb pull /system/lib/libOmxWmvDec.so ../../../vendor/hisense/$DEVICE/proprietary/libOmxWmvDec.so
 adb pull /system/etc/init.qcom.bt.sh ../../../vendor/hisense/$DEVICE/proprietary/init.qcom.bt.sh
 adb pull /system/bin/hci_qcomm_init ../../../vendor/hisense/$DEVICE/proprietary/hci_qcomm_init
+adb pull /system/lib/hw/sensors.default.so ../../../vendor/hisense/$DEVICE/proprietary/sensors.default.so
 
 
 (cat << EOF) | sed s/__DEVICE__/$DEVICE/g > ../../../vendor/hisense/$DEVICE/$DEVICE-vendor-blobs.mk
@@ -70,6 +74,10 @@ adb pull /system/bin/hci_qcomm_init ../../../vendor/hisense/$DEVICE/proprietary/
 # All the blobs necessary for e910
 PRODUCT_COPY_FILES += \\
     vendor/hisense/__DEVICE__/proprietary/AudioFilter.csv:system/etc/AudioFilter.csv \\
+    vendor/hisense/__DEVICE__/proprietary/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \\
+    vendor/hisense/__DEVICE__/proprietary/libGLESv1_CM_adreno200.so:/system/lib/egl/libGLESv1_CM_adreno200.so \\
+    vendor/hisense/__DEVICE__/proprietary/libGLESv2_adreno200.so:/system/lib/egl/libGLESv2_adreno200.so \\
+    vendor/hisense/__DEVICE__/proprietary/libgsl.so:system/lib/libgsl.so \\
     vendor/hisense/__DEVICE__/proprietary/libril-qc-1.so:/system/lib/libril-qc-1.so \\
     vendor/hisense/__DEVICE__/proprietary/liboncrpc.so:/system/lib/liboncrpc.so \\
     vendor/hisense/__DEVICE__/proprietary/libdsm.so:/system/lib/libdsm.so \\
@@ -91,13 +99,13 @@ PRODUCT_COPY_FILES += \\
     vendor/hisense/__DEVICE__/proprietary/libmmjpeg.so:system/lib/libmmjpeg.so \\
     vendor/hisense/__DEVICE__/proprietary/libmmipl.so:system/lib/libmmipl.so \\
     vendor/hisense/__DEVICE__/proprietary/libmm-adspsvc.so:system/lib/libmm-adspsvc.so \\
-    vendor/hisense/__DEVICE__/proprietary/libmm-omxcore.so:system/lib/libmm-omxcore.so \\
     vendor/hisense/__DEVICE__/proprietary/libOmxH264Dec.so:system/lib/libOmxH264Dec.so \\
     vendor/hisense/__DEVICE__/proprietary/libOmxMpeg4Dec.so:system/lib/libOmxMpeg4Dec.so \\
     vendor/hisense/__DEVICE__/proprietary/libOmxVidEnc.so:system/lib/libOmxVidEnc.so \\
     vendor/hisense/__DEVICE__/proprietary/libOmxWmvDec.so:system/lib/libOmxWmvDec.so \\
     vendor/hisense/__DEVICE__/proprietary/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \\
-    vendor/hisense/__DEVICE__/proprietary/hci_qcomm_init:system/bin/hci_qcomm_init
+    vendor/hisense/__DEVICE__/proprietary/hci_qcomm_init:system/bin/hci_qcomm_init \\
+    vendor/hisense/__DEVICE__/proprietary/sensors.default.so:system/lib/hw/sensors.default.so
 EOF
 
 ./setup-makefiles.sh
