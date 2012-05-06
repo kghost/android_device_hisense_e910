@@ -30,8 +30,8 @@ PRODUCT_PACKAGES += \
 
 # override default
 PRODUCT_COPY_FILES += \
+    device/hisense/e910/ueventd.rc:root/ueventd.rc
 #    device/hisense/e910/init.rc:root/init.rc \
-    device/hisense/e910/ueventd.rc:root/ueventd.rc \
 
 # vold config
 PRODUCT_COPY_FILES += \

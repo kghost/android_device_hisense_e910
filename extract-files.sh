@@ -23,6 +23,7 @@ adb pull /system/etc/AudioFilter.csv ../../../vendor/hisense/$DEVICE/proprietary
 adb pull /system/lib/egl/libEGL_adreno200.so ../../../vendor/hisense/$DEVICE/proprietary/libEGL_adreno200.so
 adb pull /system/lib/egl/libGLESv1_CM_adreno200.so ../../../vendor/hisense/$DEVICE/proprietary/libGLESv1_CM_adreno200.so
 adb pull /system/lib/egl/libGLESv2_adreno200.so ../../../vendor/hisense/$DEVICE/proprietary/libGLESv2_adreno200.so
+adb pull /system/lib/hw/copybit.msm7k.so ../../../vendor/hisense/$DEVICE/proprietary/copybit.msm7k.so
 adb pull /system/lib/libgsl.so ../../../vendor/hisense/$DEVICE/proprietary/libgsl.so
 adb pull /system/lib/libril-qc-1.so ../../../vendor/hisense/$DEVICE/proprietary/libril-qc-1.so
 adb pull /system/lib/liboncrpc.so ../../../vendor/hisense/$DEVICE/proprietary/liboncrpc.so
@@ -77,6 +78,7 @@ PRODUCT_COPY_FILES += \\
     vendor/hisense/__DEVICE__/proprietary/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \\
     vendor/hisense/__DEVICE__/proprietary/libGLESv1_CM_adreno200.so:/system/lib/egl/libGLESv1_CM_adreno200.so \\
     vendor/hisense/__DEVICE__/proprietary/libGLESv2_adreno200.so:/system/lib/egl/libGLESv2_adreno200.so \\
+    vendor/hisense/__DEVICE__/proprietary/copybit.msm7k.so:/system/lib/hw/copybit.msm7k.so \\
     vendor/hisense/__DEVICE__/proprietary/libgsl.so:system/lib/libgsl.so \\
     vendor/hisense/__DEVICE__/proprietary/libril-qc-1.so:/system/lib/libril-qc-1.so \\
     vendor/hisense/__DEVICE__/proprietary/liboncrpc.so:/system/lib/liboncrpc.so \\
