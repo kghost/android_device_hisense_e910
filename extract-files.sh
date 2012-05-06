@@ -20,7 +20,7 @@ DEVICE=e910
 
 mkdir -p ../../../vendor/hisense/$DEVICE/proprietary
 adb pull /system/etc/AudioFilter.csv ../../../vendor/hisense/$DEVICE/proprietary/AudioFilter.csv
-adb pull /system/lib/egl/libGLES_qcom.so ../../../vendor/hisense/$DEVICE/proprietary/libGLES_qcom.so
+adb pull /system/lib/egl/libGLES_android.so ../../../vendor/hisense/$DEVICE/proprietary/libGLES_android.so
 
 adb pull /system/lib/libril-qc-1.so ../../../vendor/hisense/$DEVICE/proprietary/libril-qc-1.so
 adb pull /system/lib/liboncrpc.so ../../../vendor/hisense/$DEVICE/proprietary/liboncrpc.so
@@ -39,11 +39,8 @@ adb pull /system/lib/libril-qcril-hook-oem.so ../../../vendor/hisense/$DEVICE/pr
 adb pull /system/lib/libdss.so ../../../vendor/hisense/$DEVICE/proprietary/libdss.so
 adb pull /system/lib/libqmi.so ../../../vendor/hisense/$DEVICE/proprietary/libqmi.so
 adb pull /system/lib/liboem_rapi.so ../../../vendor/hisense/$DEVICE/proprietary/liboem_rapi.so
-adb pull /system/lib/libhwrpc.so ../../../vendor/hisense/$DEVICE/proprietary/libhwrpc.so
 adb pull /system/bin/qmuxd ../../../vendor/hisense/$DEVICE/proprietary/qmuxd
-adb pull /system/lib/libmmcamera.so ../../../vendor/hisense/$DEVICE/proprietary/libmmcamera.so
 adb pull /system/lib/libmmjpeg.so ../../../vendor/hisense/$DEVICE/proprietary/libmmjpeg.so
-adb pull /system/lib/libmm-qcamera-tgt.so ../../../vendor/hisense/$DEVICE/proprietary/libmm-qcamera-tgt.so
 adb pull /system/lib/libmmipl.so ../../../vendor/hisense/$DEVICE/proprietary/libmmipl.so
 adb pull /system/lib/libmm-adspsvc.so ../../../vendor/hisense/$DEVICE/proprietary/libmm-adspsvc.so
 adb pull /system/lib/libmm-omxcore.so ../../../vendor/hisense/$DEVICE/proprietary/libmm-omxcore.so
@@ -51,8 +48,6 @@ adb pull /system/lib/libOmxH264Dec.so ../../../vendor/hisense/$DEVICE/proprietar
 adb pull /system/lib/libOmxMpeg4Dec.so ../../../vendor/hisense/$DEVICE/proprietary/libOmxMpeg4Dec.so
 adb pull /system/lib/libOmxVidEnc.so ../../../vendor/hisense/$DEVICE/proprietary/libOmxVidEnc.so
 adb pull /system/lib/libOmxWmvDec.so ../../../vendor/hisense/$DEVICE/proprietary/libOmxWmvDec.so
-adb pull /system/lib/libomx_wmadec_sharedlibrary.so ../../../vendor/hisense/$DEVICE/proprietary/libomx_wmadec_sharedlibrary.so
-adb pull /system/lib/libomx_wmvdec_sharedlibrary.so ../../../vendor/hisense/$DEVICE/proprietary/libomx_wmvdec_sharedlibrary.so
 adb pull /system/etc/init.qcom.bt.sh ../../../vendor/hisense/$DEVICE/proprietary/init.qcom.bt.sh
 adb pull /system/bin/hci_qcomm_init ../../../vendor/hisense/$DEVICE/proprietary/hci_qcomm_init
 
@@ -77,7 +72,7 @@ adb pull /system/bin/hci_qcomm_init ../../../vendor/hisense/$DEVICE/proprietary/
 # All the blobs necessary for e910
 PRODUCT_COPY_FILES += \\
     vendor/hisense/__DEVICE__/proprietary/AudioFilter.csv:system/etc/AudioFilter.csv \\
-    vendor/hisense/__DEVICE__/proprietary/libGLES_qcom.so:system/lib/egl/libGLES_qcom.so \\
+    vendor/hisense/__DEVICE__/proprietary/libGLES_android.so:system/lib/egl/libGLES_android.so \\
     vendor/hisense/__DEVICE__/proprietary/libril-qc-1.so:/system/lib/libril-qc-1.so \\
     vendor/hisense/__DEVICE__/proprietary/liboncrpc.so:/system/lib/liboncrpc.so \\
     vendor/hisense/__DEVICE__/proprietary/libdsm.so:/system/lib/libdsm.so \\
@@ -95,11 +90,8 @@ PRODUCT_COPY_FILES += \\
     vendor/hisense/__DEVICE__/proprietary/libdss.so:/system/lib/libdss.so \\
     vendor/hisense/__DEVICE__/proprietary/libqmi.so:/system/lib/libqmi.so \\
     vendor/hisense/__DEVICE__/proprietary/liboem_rapi.so:system/lib/liboem_rapi.so \\
-    vendor/hisense/__DEVICE__/proprietary/libhwrpc.so:system/lib/libhwrpc.so \\
     vendor/hisense/__DEVICE__/proprietary/qmuxd:system/bin/qmuxd \\
-    vendor/hisense/__DEVICE__/proprietary/libmmcamera.so:system/lib/libmmcamera.so \\
     vendor/hisense/__DEVICE__/proprietary/libmmjpeg.so:system/lib/libmmjpeg.so \\
-    vendor/hisense/__DEVICE__/proprietary/libmm-qcamera-tgt.so:system/lib/libmm-qcamera-tgt.so \\
     vendor/hisense/__DEVICE__/proprietary/libmmipl.so:system/lib/libmmipl.so \\
     vendor/hisense/__DEVICE__/proprietary/libmm-adspsvc.so:system/lib/libmm-adspsvc.so \\
     vendor/hisense/__DEVICE__/proprietary/libmm-omxcore.so:system/lib/libmm-omxcore.so \\
@@ -107,8 +99,6 @@ PRODUCT_COPY_FILES += \\
     vendor/hisense/__DEVICE__/proprietary/libOmxMpeg4Dec.so:system/lib/libOmxMpeg4Dec.so \\
     vendor/hisense/__DEVICE__/proprietary/libOmxVidEnc.so:system/lib/libOmxVidEnc.so \\
     vendor/hisense/__DEVICE__/proprietary/libOmxWmvDec.so:system/lib/libOmxWmvDec.so \\
-    vendor/hisense/__DEVICE__/proprietary/libomx_wmadec_sharedlibrary.so:system/lib/libomx_wmadec_sharedlibrary.so \\
-    vendor/hisense/__DEVICE__/proprietary/libomx_wmvdec_sharedlibrary.so:system/lib/libomx_wmvdec_sharedlibrary.so \\
     vendor/hisense/__DEVICE__/proprietary/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \\
     vendor/hisense/__DEVICE__/proprietary/hci_qcomm_init:system/bin/hci_qcomm_init
 EOF

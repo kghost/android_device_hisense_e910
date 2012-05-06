@@ -18,7 +18,7 @@ DEVICE=e910
 
 mkdir -p ../../../vendor/hisense/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/etc/AudioFilter.csv -d ../../../vendor/hisense/$DEVICE/proprietary
-unzip -j -o ../../../${DEVICE}_update.zip system/lib/egl/libGLES_qcom.so -d ../../../vendor/hisense/$DEVICE/proprietary
+unzip -j -o ../../../${DEVICE}_update.zip system/lib/egl/libGLES_android.so -d ../../../vendor/hisense/$DEVICE/proprietary
 
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libril-qc-1.so -d ../../../vendor/hisense/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/liboncrpc.so -d ../../../vendor/hisense/$DEVICE/proprietary
@@ -37,11 +37,8 @@ unzip -j -o ../../../${DEVICE}_update.zip system/lib/libril-qcril-hook-oem.so -d
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libdss.so -d ../../../vendor/hisense/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libqmi.so -d ../../../vendor/hisense/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/liboem_rapi.so -d ../../../vendor/hisense/$DEVICE/proprietary
-unzip -j -o ../../../${DEVICE}_update.zip system/lib/libhwrpc.so -d ../../../vendor/hisense/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/bin/qmuxd -d ../../../vendor/hisense/$DEVICE/proprietary
-unzip -j -o ../../../${DEVICE}_update.zip system/lib/libmmcamera.so -d ../../../vendor/hisense/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libmmjpeg.so -d ../../../vendor/hisense/$DEVICE/proprietary
-unzip -j -o ../../../${DEVICE}_update.zip system/lib/libmm-qcamera-tgt.so -d ../../../vendor/hisense/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libmmipl.so -d ../../../vendor/hisense/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libmm-adspsvc.so -d ../../../vendor/hisense/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libmm-omxcore.so -d ../../../vendor/hisense/$DEVICE/proprietary
@@ -49,8 +46,6 @@ unzip -j -o ../../../${DEVICE}_update.zip system/lib/libOmxH264Dec.so -d ../../.
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libOmxMpeg4Dec.so -d ../../../vendor/hisense/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libOmxVidEnc.so -d ../../../vendor/hisense/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libOmxWmvDec.so -d ../../../vendor/hisense/$DEVICE/proprietary
-unzip -j -o ../../../${DEVICE}_update.zip system/lib/libomx_wmadec_sharedlibrary.so -d ../../../vendor/hisense/$DEVICE/proprietary
-unzip -j -o ../../../${DEVICE}_update.zip system/lib/libomx_wmvdec_sharedlibrary.so -d ../../../vendor/hisense/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/etc/init.qcom.bt.sh -d ../../../vendor/hisense/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/bin/hci_qcomm_init -d ../../../vendor/hisense/$DEVICE/proprietary
 
@@ -75,7 +70,7 @@ unzip -j -o ../../../${DEVICE}_update.zip system/bin/hci_qcomm_init -d ../../../
 # All the blobs necessary for u8220
 PRODUCT_COPY_FILES += \\
     vendor/hisense/__DEVICE__/proprietary/AudioFilter.csv:system/etc/AudioFilter.csv \\
-    vendor/hisense/__DEVICE__/proprietary/libGLES_qcom.so:system/lib/egl/libGLES_qcom.so \\
+    vendor/hisense/__DEVICE__/proprietary/libGLES_android.so:system/lib/egl/libGLES_android.so \\
     vendor/hisense/__DEVICE__/proprietary/libril-qc-1.so:/system/lib/libril-qc-1.so \\
     vendor/hisense/__DEVICE__/proprietary/liboncrpc.so:/system/lib/liboncrpc.so \\
     vendor/hisense/__DEVICE__/proprietary/libdsm.so:/system/lib/libdsm.so \\
@@ -93,11 +88,8 @@ PRODUCT_COPY_FILES += \\
     vendor/hisense/__DEVICE__/proprietary/libdss.so:/system/lib/libdss.so \\
     vendor/hisense/__DEVICE__/proprietary/libqmi.so:/system/lib/libqmi.so \\
     vendor/hisense/__DEVICE__/proprietary/liboem_rapi.so:system/lib/liboem_rapi.so \\
-    vendor/hisense/__DEVICE__/proprietary/libhwrpc.so:system/lib/libhwrpc.so \\
     vendor/hisense/__DEVICE__/proprietary/qmuxd:system/bin/qmuxd \\
-    vendor/hisense/__DEVICE__/proprietary/libmmcamera.so:system/lib/libmmcamera.so \\
     vendor/hisense/__DEVICE__/proprietary/libmmjpeg.so:system/lib/libmmjpeg.so \\
-    vendor/hisense/__DEVICE__/proprietary/libmm-qcamera-tgt.so:system/lib/libmm-qcamera-tgt.so \\
     vendor/hisense/__DEVICE__/proprietary/libmmipl.so:system/lib/libmmipl.so \\
     vendor/hisense/__DEVICE__/proprietary/libmm-adspsvc.so:system/lib/libmm-adspsvc.so \\
     vendor/hisense/__DEVICE__/proprietary/libmm-omxcore.so:system/lib/libmm-omxcore.so \\
@@ -105,8 +97,6 @@ PRODUCT_COPY_FILES += \\
     vendor/hisense/__DEVICE__/proprietary/libOmxMpeg4Dec.so:system/lib/libOmxMpeg4Dec.so \\
     vendor/hisense/__DEVICE__/proprietary/libOmxVidEnc.so:system/lib/libOmxVidEnc.so \\
     vendor/hisense/__DEVICE__/proprietary/libOmxWmvDec.so:system/lib/libOmxWmvDec.so \\
-    vendor/hisense/__DEVICE__/proprietary/libomx_wmadec_sharedlibrary.so:system/lib/libomx_wmadec_sharedlibrary.so \\
-    vendor/hisense/__DEVICE__/proprietary/libomx_wmvdec_sharedlibrary.so:system/lib/libomx_wmvdec_sharedlibrary.so \\
     vendor/hisense/__DEVICE__/proprietary/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \\
     vendor/hisense/__DEVICE__/proprietary/hci_qcomm_init:system/bin/hci_qcomm_init
 EOF
