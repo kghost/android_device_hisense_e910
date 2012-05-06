@@ -18,8 +18,6 @@ DEVICE=e910
 
 mkdir -p ../../../vendor/hisense/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/etc/AudioFilter.csv -d ../../../vendor/hisense/$DEVICE/proprietary
-unzip -j -o ../../../${DEVICE}_update.zip system/lib/egl/libGLES_android.so -d ../../../vendor/hisense/$DEVICE/proprietary
-
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libril-qc-1.so -d ../../../vendor/hisense/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/liboncrpc.so -d ../../../vendor/hisense/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libdsm.so -d ../../../vendor/hisense/$DEVICE/proprietary
@@ -70,7 +68,6 @@ unzip -j -o ../../../${DEVICE}_update.zip system/bin/hci_qcomm_init -d ../../../
 # All the blobs necessary for u8220
 PRODUCT_COPY_FILES += \\
     vendor/hisense/__DEVICE__/proprietary/AudioFilter.csv:system/etc/AudioFilter.csv \\
-    vendor/hisense/__DEVICE__/proprietary/libGLES_android.so:system/lib/egl/libGLES_android.so \\
     vendor/hisense/__DEVICE__/proprietary/libril-qc-1.so:/system/lib/libril-qc-1.so \\
     vendor/hisense/__DEVICE__/proprietary/liboncrpc.so:/system/lib/liboncrpc.so \\
     vendor/hisense/__DEVICE__/proprietary/libdsm.so:/system/lib/libdsm.so \\

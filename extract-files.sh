@@ -20,8 +20,6 @@ DEVICE=e910
 
 mkdir -p ../../../vendor/hisense/$DEVICE/proprietary
 adb pull /system/etc/AudioFilter.csv ../../../vendor/hisense/$DEVICE/proprietary/AudioFilter.csv
-adb pull /system/lib/egl/libGLES_android.so ../../../vendor/hisense/$DEVICE/proprietary/libGLES_android.so
-
 adb pull /system/lib/libril-qc-1.so ../../../vendor/hisense/$DEVICE/proprietary/libril-qc-1.so
 adb pull /system/lib/liboncrpc.so ../../../vendor/hisense/$DEVICE/proprietary/liboncrpc.so
 adb pull /system/lib/libdsm.so ../../../vendor/hisense/$DEVICE/proprietary/libdsm.so
@@ -72,7 +70,6 @@ adb pull /system/bin/hci_qcomm_init ../../../vendor/hisense/$DEVICE/proprietary/
 # All the blobs necessary for e910
 PRODUCT_COPY_FILES += \\
     vendor/hisense/__DEVICE__/proprietary/AudioFilter.csv:system/etc/AudioFilter.csv \\
-    vendor/hisense/__DEVICE__/proprietary/libGLES_android.so:system/lib/egl/libGLES_android.so \\
     vendor/hisense/__DEVICE__/proprietary/libril-qc-1.so:/system/lib/libril-qc-1.so \\
     vendor/hisense/__DEVICE__/proprietary/liboncrpc.so:/system/lib/liboncrpc.so \\
     vendor/hisense/__DEVICE__/proprietary/libdsm.so:/system/lib/libdsm.so \\
