@@ -45,7 +45,7 @@ WIFI_DRIVER_MODULE_NAME     := ar6000
 BOARD_KERNEL_BASE := 0x00200000
 BOARD_FORCE_RAMDISK_ADDRESS := 0x01200000
 BOARD_KERNEL_CMDLINE := console=ttyMSM2,115200,n8 androidboot.hardware=qcom loglevel=7
-TARGET_RECOVERY_INITRC := device/hisense/e910/init.rc
+TARGET_RECOVERY_INITRC := device/hisense/e910/init.recovery.rc
 
 BOARD_HAVE_BLUETOOTH := true
 

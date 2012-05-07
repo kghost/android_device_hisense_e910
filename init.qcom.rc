@@ -454,10 +454,3 @@ service rmwifi /system/bin/sh /system/etc/remove_wifi_mod.sh
     disabled
     oneshot
 #zhangjingxin add end 2011/12/01
-
-# from init.rc
-on boot
-    chmod 0777 /dev/akm8975_aot
-    chmod 0777 /dev/akm8975_dev
-    chmod 0777 /dev/adxl346_dev
-    chmod 0777 /dev/apds9900_dev

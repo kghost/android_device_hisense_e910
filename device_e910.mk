@@ -23,6 +23,7 @@ DEVICE_PACKAGE_OVERLAYS := device/hisense/e910/overlay
 PRODUCT_PACKAGES += \
     libOmxCore \
     gralloc.msm7k \
+    lights.e910 \
     libRS \
     librs_jni \
     hwprops \
@@ -30,8 +31,8 @@ PRODUCT_PACKAGES += \
 
 # override default
 PRODUCT_COPY_FILES += \
+    device/hisense/e910/init.rc:root/init.rc \
     device/hisense/e910/ueventd.rc:root/ueventd.rc
-#    device/hisense/e910/init.rc:root/init.rc \
 
 # vold config
 PRODUCT_COPY_FILES += \
@@ -115,7 +116,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     rild.libpath=/system/lib/libril-qc-1.so \
-    rild.libargs=-d /dev/smd0 \
+    rild.libargs=-d/dev/smd0 \
     ril.subscription.types=NV,RUIM \
     DEVICE_PROVISIONED=1 \
     debug.sf.hw=1 \

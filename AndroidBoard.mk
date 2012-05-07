@@ -14,11 +14,6 @@
 
 LOCAL_PATH := $(call my-dir)
 
-#file := $(TARGET_ROOT_OUT)/init.rc
-#ALL_PREBUILT += $(file)
-#$(file) : $(LOCAL_PATH)/init.rc | $(ACP)
-#	$(transform-prebuilt-to-target)
-
 file := $(TARGET_ROOT_OUT)/init.qcom.rc
 ALL_PREBUILT += $(file)
 $(file) : $(LOCAL_PATH)/init.qcom.rc | $(ACP)
@@ -38,11 +33,6 @@ file := $(TARGET_ROOT_OUT)/init.target.rc
 ALL_PREBUILT += $(file)
 $(file) : $(LOCAL_PATH)/init.target.rc | $(ACP)
 	$(transform-prebuilt-to-target)
-
-#file := $(TARGET_ROOT_OUT)/ueventd.rc
-#ALL_PREBUILT += $(file)
-#$(file) : $(LOCAL_PATH)/ueventd.rc | $(ACP)
-#	$(transform-prebuilt-to-target)
 
 -include vendor/hisense/e910/AndroidBoardVendor.mk
 
