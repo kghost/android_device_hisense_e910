@@ -115,6 +115,8 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.touchscreen.xml:system/etc/permissions/android.hardware.touchscreen.xml
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.telephony.ril_class=hisense \
+    ro.telephony.multi_mode_radio=true \
     rild.libpath=/system/lib/libril-qc-1.so \
     rild.libargs=-d/dev/smd0 \
     ril.subscription.types=NV,RUIM \
