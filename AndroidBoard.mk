@@ -1,4 +1,4 @@
-# Copyright (C) 2007 The Android Open Source Project
+# Copyright (C) 2009 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,27 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+#
+# AndroidBoard.mk is a legacy mechanism to deal with a few
+# edge-cases that can't be managed otherwise. No new rules
+# should be added to this file.
+#
+
+# Least specific includes go first, so that they can get
+# overridden further down
+
 LOCAL_PATH := $(call my-dir)
 
-file := $(TARGET_ROOT_OUT)/init.qcom.rc
-ALL_PREBUILT += $(file)
-$(file) : $(LOCAL_PATH)/init.qcom.rc | $(ACP)
-	$(transform-prebuilt-to-target)
+include $(CLEAR_VARS)
+#LOCAL_SRC_FILES := bravo-keypad.kcm
+LOCAL_MODULE_TAGS := optional
+#include $(BUILD_KEY_CHAR_MAP)
 
-file := $(TARGET_ROOT_OUT)/init.cal.rc
-ALL_PREBUILT += $(file)
-$(file) : $(LOCAL_PATH)/init.cal.rc | $(ACP)
-	$(transform-prebuilt-to-target)
-
-file := $(TARGET_ROOT_OUT)/init.qcom.sh
-ALL_PREBUILT += $(file)
-$(file) : $(LOCAL_PATH)/init.qcom.sh | $(ACP)
-	$(transform-prebuilt-to-target)
-
-file := $(TARGET_ROOT_OUT)/init.target.rc
-ALL_PREBUILT += $(file)
-$(file) : $(LOCAL_PATH)/init.target.rc | $(ACP)
-	$(transform-prebuilt-to-target)
-
+# include the non-open-source counterpart to this file
 -include vendor/hisense/e910/AndroidBoardVendor.mk
-

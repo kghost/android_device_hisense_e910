@@ -21,7 +21,7 @@
          EVENT_SIM_NETWORK_LOCKED events from the Sim.  If true, this will
          prevent the IccNetworkDepersonalizationPanel from being shown,
          and effectively disable the "Sim network lock" feature. -->
-    <bool name="ignore_sim_network_locked_events">true</bool>
+    <bool name="ignore_sim_network_locked_events">false</bool>
 
     <!-- Flag indicating whether the Phone app should provide
          a "Dismiss" button on the SIM network unlock screen.
@@ -32,23 +32,6 @@
          Emergency Call if your SIM is network-locked and you don't know
          the PIN.) -->
     <bool name="sim_network_unlock_allow_dismiss">true</bool>
-
-    <!-- If true, enable the onscreen touch UI for incoming calls.
-         This feature is necessary for devices with no hard SEND/END keys,
-         and optional on all other devices. -->
-    <bool name="allow_incoming_call_touch_ui">true</bool>
-
-    <!-- If true, enable the onscreen touch UI for regular "ongoing call"
-         states of the in-call UI.
-         In general, the touch UI is used for regular calls only on
-         devices with a proximity sensor.  (On other devices, we can't
-         have touchable UI onscreen during a call because of the risk of
-         false cheek touches.)
-         TODO: maybe this can be determined algorithmically based on
-         specific properties of the device, perhaps by detecting the
-         presence of a proximity sensor and/or hard SEND/END keys.  (If
-         so, we wouldn't need this flag at all.) -->
-    <bool name="allow_in_call_touch_ui">true</bool>
 
     <!-- OTA configuration values, used when provisioning CDMA devices.
          Following defaults values of zero means OTA UI is completely disabled.
@@ -78,9 +61,6 @@
          apps/Contacts. -->
     <bool name="config_enable_dialer_key_vibration">true</bool>
 
-    <!-- Flag indicating if the voicemail notification option is enabled -->
-    <bool name="voicemail_notification_enabled">true</bool>
-
     <!-- Flag indicating if the tty is enabled -->
     <bool name="tty_enabled">false</bool>
 
@@ -97,19 +77,8 @@
          just let the radio/BP handle playing of the tones. -->
     <bool name="allow_local_dtmf_tones">true</bool>
 
-    <!-- While an incoming call is ringing, this flag specifies whether
-         the BACK key should reject the current call (just like the
-         ENDCALL button does.)
-         This was originally the default behavior for all platforms, but
-         it's a bad idea on devices where the BACK key is a capacitive
-         button (since it's too easy to press the key accidentally as you
-         pull the phone out of your pocket.)  So devices that *don't* want
-         this behavior should set this flag to false via the resource
-         overlay.  -->
-    <bool name="allow_back_key_to_reject_incoming_call">true</bool>
-
     <!-- If true, show an onscreen "Dial" button in the dialer.
-         In practice this is used on all platforms even the ones with hard SEND/END
+         In practice this is used on all platforms, even the ones with hard SEND/END
          keys, but for maximum flexibility it's controlled by a flag here
          (which can be overridden on a per-product basis.) -->
     <bool name="config_show_onscreen_dial_button">true</bool>
@@ -122,20 +91,25 @@
     <!-- Determines if device implements a noise suppression device for in call audio-->
     <bool name="has_in_call_noise_suppression">false</bool>
 
-    <!-- Voice quality filter parameter
-         Set this if your device's libaudio has a parameter to adjust voice quality
-         (don't forget to also overlay to value array in that case).
-         Leave empty to disable the feature. -->
-    <string name="voice_quality_param"></string>
+    <!-- Determines if the current device should allow emergency numbers
+         to be logged in the Call Log.
+         (Some carriers require that emergency calls *not* be logged,
+         presumably to avoid the risk of accidental redialing from the
+         call log UI.  This is a good idea, so the default here is false.)
+
+         TODO: on the other hand, it might still be useful to have some
+         record of the emergency calls you've made, or to be able to look
+         up the exact date/time of an emergency call.  So perhaps we
+         *should* log those calls, but instead fix the call log to disable
+         the "call" button for emergency numbers. -->
+    <bool name="allow_emergency_numbers_in_call_log">false</bool>
+
+    <!-- If this is true, the SIM card (through Customer Service Profile EF file) will be
+         able to prevent manual operator selection. If false, this SIM setting will be
+         ignored and manual operator selection will always be available. See
+         CPHS4_2.WW6, CPHS B.4.7.1 for more information -->
+    <bool name="csp_enabled">false</bool>
 
     <!-- If true, removes the Voice Privacy option from Call Settings -->
     <bool name="config_voice_privacy_disable">false</bool>
-
-    <!-- If true, removes the Preferred Network Mode selection from Mobile Network Settings -->
-    <bool name="config_preferred_mode_disable">false</bool>
-
-    <!-- True if the device has a fixed keyboard (as oposite to a sliding one) so keyboard is
-         always open. Will modify proximity checking behaviour. -->
-    <bool name="config_device_has_fixed_keyboard">false</bool>
-
 </resources>
