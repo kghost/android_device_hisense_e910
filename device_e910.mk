@@ -34,6 +34,10 @@ PRODUCT_COPY_FILES += \
     device/hisense/e910/init.rc:root/init.rc \
     device/hisense/e910/ueventd.rc:root/ueventd.rc
 
+# APNs for 3G network access
+PRODUCT_COPY_FILES += \
+    device/hisense/e910/apns-conf.xml:system/etc/apns-conf.xml
+
 # vold config
 PRODUCT_COPY_FILES += \
     device/hisense/e910/vold.fstab:system/etc/vold.fstab
