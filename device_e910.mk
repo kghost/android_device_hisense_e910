@@ -23,7 +23,8 @@ DEVICE_PACKAGE_OVERLAYS := device/hisense/e910/overlay
 PRODUCT_PACKAGES += \
     libOmxCore \
     gralloc.msm7k \
-    lights.e910 \
+    lights.msm7k \
+    libaudio \
     libRS \
     librs_jni \
     hwprops \

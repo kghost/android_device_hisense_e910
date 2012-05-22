@@ -13,5 +13,5 @@
 # limitations under the License.
 
 ifeq ($(TARGET_DEVICE),e910)
-    include $(call all-named-subdir-makefiles, liblights libaudio libcopybit libsensors)
+    include $(call all-named-subdir-makefiles, liblights libaudio)
 endif
